@@ -1,0 +1,234 @@
+<template>
+    <!-- Service Cloud Voice Toolkit API Component -->
+    <lightning-service-cloud-voice-toolkit-api class="slds-hide"></lightning-service-cloud-voice-toolkit-api>
+    
+    <!-- Only show phone controls during active calls -->
+    <template lwc:if={shouldShowControls}>
+        <!-- Mini-bar when floating -->
+        <template lwc:if={isFloating}>
+            <div class={miniBarCssClasses} style={miniBarPositionWithBackground} onmousedown={handleDragStart} ontouchstart={handleDragStart}>
+                <!-- Drag handle -->
+                <lightning-icon icon-name="utility:drag_and_drop" size="small" class="drag-handle" title="Drag to move"></lightning-icon>
+                
+                <!-- Call time -->
+                <div class="mini-metric">
+                    <span class="mini-label">Call:</span>
+                    <span class="mini-value">{formattedCallDuration}</span>
+                </div>
+                
+                <!-- Hold time -->
+                <div class="mini-metric">
+                    <span class="mini-label">Hold:</span>
+                    <span class="mini-value hold-time">{formattedTotalHoldTime}</span>
+                </div>
+                
+                <!-- Control buttons -->
+                <div class="mini-controls">
+                    <lightning-button-icon icon-name="utility:capslock" title="Flag Call" onclick={handleFlagCall} variant="bare" size="small" class="mini-button"></lightning-button-icon>
+                    <lightning-button-icon icon-name={holdButtonIcon} title={holdButtonTitle} onclick={handleHoldClick} variant="bare" size="small" class="mini-button"></lightning-button-icon>
+                    <lightning-button-icon icon-name={muteButtonIcon} title={muteButtonTitle} onclick={handleMuteClick} variant="bare" size="small" class="mini-button"></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:product_transfer" title="Transfer Call" onclick={handleTransfer} variant="bare" size="small" class="mini-button"></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:end_call" title="End Call" onclick={handleEndCall} variant="bare" size="small" class="mini-button end-call-button"></lightning-button-icon>
+                </div>
+                
+                <!-- Dock back button -->
+                <lightning-button-icon icon-name="utility:dock_panel" title="Dock Panel" onclick={toggleFloating} variant="bare" size="small" class="dock-button"></lightning-button-icon>
+            </div>
+        </template>
+        
+        <!-- Full panel when docked -->
+        <template lwc:else>
+            <!-- Container wrapper for dynamic responsive layout -->
+            <div class={dynamicContainerClass}>
+                <!-- Main Phone Control Panel - Linear Layout -->
+                <div class="phone-control-panel">
+                    <!-- Header with Phone Title and Connected Badge -->
+                    <header class="phone-header-linear">
+                        <div class="header-content">
+                            <div class="header-left">
+                                <lightning-icon icon-name="utility:phone_portrait" 
+                                                size="x-small" 
+                                                class="phone-icon"
+                                                alternative-text="Phone Call">
+                                </lightning-icon>
+                                <h2 class="phone-title">Phone</h2>
+                            </div>
+                            <div class="header-right">
+                                <span class={statusBadgeClass}>{callStatus}</span>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Phone Number and Direction -->
+                    <div class="call-info-section">
+                        <div class="phone-number">{displayPhoneNumber}</div>
+                        <div class="call-direction">{callDirection}</div>
+                    </div>
+
+                    <!-- Dual Metrics Section -->
+                    <div class="metrics-section">
+                        <div class="metric-box">
+                            <div class="metric-label">Total Call Time</div>
+                            <div class="metric-value">{formattedCallDuration}</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-label">Total Hold Time</div>
+                            <div class="metric-value hold-time">{formattedTotalHoldTime}</div>
+                        </div>
+                    </div>
+
+                    <!-- Control Toolbar -->
+                    <div class={toolbarCssClasses} style={toolbarBackgroundStyle} role="toolbar" aria-label="Call Control Actions">
+                        <!-- Flag Call Button -->
+                        <lightning-button-icon 
+                            icon-name="utility:capslock"
+                            title="Flag Call"
+                            alternative-text="Flag this call for review"
+                            onclick={handleFlagCall}
+                            variant="container"
+                            class="toolbar-button">
+                        </lightning-button-icon>
+
+                        <!-- Hold/Resume Button -->
+                        <lightning-button-icon 
+                            icon-name={holdButtonIcon}
+                            title={holdButtonTitle}
+                            alternative-text={holdButtonTitle}
+                            onclick={handleHoldClick}
+                            variant="container"
+                            class={holdToolbarClass}>
+                        </lightning-button-icon>
+
+                        <!-- Mute/Unmute Button -->
+                        <lightning-button-icon 
+                            icon-name={muteButtonIcon}
+                            title={muteButtonTitle}
+                            alternative-text={muteButtonTitle}
+                            onclick={handleMuteClick}
+                            variant="container"
+                            class={muteToolbarClass}>
+                        </lightning-button-icon>
+
+                        <!-- Transfer Button -->
+                        <lightning-button-icon 
+                            icon-name="utility:product_transfer"
+                            title="Transfer Call"
+                            alternative-text="Transfer this call"
+                            onclick={handleTransfer}
+                            variant="container"
+                            class="toolbar-button">
+                        </lightning-button-icon>
+
+                        <!-- Pop Out / Dock Button -->
+                        <lightning-button-icon 
+                            icon-name={popoutIcon}
+                            title={popoutTitle}
+                            alternative-text={popoutTitle}
+                            onclick={toggleFloating}
+                            variant="container"
+                            class="toolbar-button">
+                        </lightning-button-icon>
+
+                        <!-- End Call Button -->
+                        <lightning-button-icon 
+                            icon-name="utility:end_call"
+                            title="End Call"
+                            alternative-text="End this call"
+                            onclick={handleEndCall}
+                            variant="container"
+                            class="toolbar-button toolbar-button-end-call">
+                        </lightning-button-icon>
+                    </div>
+
+                    <!-- Expandable Hold Details Section -->
+                    <div class="hold-details-section">
+                        <div class="hold-details-header" onclick={toggleHoldDetails}>
+                            <lightning-icon icon-name="utility:success" size="xx-small" class="details-icon"></lightning-icon>
+                            <span class="details-title">Hold Details</span>
+                            <lightning-icon icon-name={holdDetailsIcon} size="xx-small" class="expand-icon"></lightning-icon>
+                        </div>
+                        
+                        <template lwc:if={showHoldDetails}>
+                            <div class="hold-details-content">
+                                <template lwc:if={hasHoldSessions}>
+                                    <dl class="sessions-list-linear">
+                                        <template for:each={holdSessions} for:item="session">
+                                            <div key={session.startTime} class="session-item-linear">
+                                                <dt class="session-label-linear">Session {session.sessionNumber}:</dt>
+                                                <dd class="session-duration-linear">{session.duration}s</dd>
+                                            </div>
+                                        </template>
+                                    </dl>
+                                </template>
+                                <template lwc:else>
+                                    <p class="no-sessions-message">No hold sessions recorded for this call.</p>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+
+                    <!-- Telephony Status Indicator -->
+                    <template lwc:if={telephonyAvailable}>
+                        <div class="telephony-status">
+                            <lightning-icon icon-name="utility:success" size="xx-small" class="status-icon-success"></lightning-icon>
+                            <span class="slds-text-body_small slds-m-left_x-small">Telephony Connected</span>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <div class="telephony-status">
+                            <lightning-icon icon-name="utility:warning" size="xx-small" class="status-icon-warning"></lightning-icon>
+                            <span class="slds-text-body_small slds-m-left_x-small">Telephony Service Unavailable</span>
+                        </div>
+                    </template>
+
+                    <!-- Debug Panel (when debug mode is enabled) -->
+                    <template lwc:if={showDebugPanel}>
+                        <div class="debug-panel slds-p-around_small slds-m-top_small">
+                            <div class="slds-text-heading_label slds-m-bottom_x-small">
+                                Debug Information:
+                            </div>
+                            <div class="debug-info">
+                                <div class="slds-grid slds-wrap debug-grid">
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <strong>Call State:</strong> {callStatus}
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <strong>On Hold:</strong> {isOnHold}
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <strong>Muted:</strong> {isMuted}
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-2">
+                                        <strong>Telephony:</strong> {telephonyAvailable}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="debug-messages slds-m-top_small">
+                                <div class="slds-text-heading_label">Recent Events:</div>
+                                <div class="debug-log">
+                                    <template for:each={debugMessages} for:item="message">
+                                        <div key={message} class="debug-message">{message}</div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </template>
+    
+    <!-- Message when controls are hidden (debug mode only) -->
+    <template lwc:else>
+        <template lwc:if={debugMode}>
+            <div class="slds-box slds-theme_shade slds-text-align_center slds-p-around_small">
+                <p class="slds-text-body_small slds-text-color_weak">
+                    Phone controls hidden - No active telephony session
+                </p>
+                <p class="slds-text-body_small slds-text-color_weak">
+                    Status: {callStatus} | Telephony: {telephonyAvailable} | Record: {recordId}
+                </p>
+            </div>
+        </template>
+    </template>
+</template>

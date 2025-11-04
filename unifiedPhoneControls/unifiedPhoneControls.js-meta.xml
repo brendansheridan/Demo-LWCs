@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Unified phone control panel with telephony controls and integrated hold timer for Voice Call records</description>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>VoiceCall</object>
+            </objects>
+            <property name="debugMode" type="Boolean" default="false" label="Debug Mode" description="Enable debug information display for troubleshooting"></property>
+            <property name="toolbarBackgroundColor" type="String" default="rgba(0, 0, 0, 0.85)" label="Toolbar Background Color" description="Background color for the call control toolbar (CSS color value, e.g., #1a1a1a, rgba(0,0,0,0.9), or hsl(0,0%,10%))"></property>
+            <property name="toolbarStyle" type="String" default="modern" label="Toolbar Style" description="Visual style for the call control toolbar (modern=dark gradient, classic=solid dark, minimal=light, custom=uses custom color)"></property>
+        </targetConfig>
+    </targetConfigs>
+    <capabilities>
+        <capability>lightning__ServiceCloudVoiceToolkitApi</capability>
+    </capabilities>
+</LightningComponentBundle>

@@ -1,0 +1,1501 @@
+/* Container wrapper for dynamic responsive layout with Container Queries */
+.phone-controls-container {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    container-type: inline-size; /* Enable CSS Container Queries */
+}
+
+/* =====================================
+   MODERN CSS CONTAINER QUERIES RESPONSIVE DESIGN
+   ===================================== */
+
+/* Ultra-narrow containers (≤320px) - Very narrow sidebar */
+@container (max-width: 320px) {
+    .phone-control-panel {
+        margin: var(--slds-g-spacing-1, 0.25rem) auto;
+        margin-bottom: var(--slds-g-spacing-2, 0.5rem);
+        max-width: 18rem;
+    }
+    
+    .phone-header-linear {
+        padding: var(--slds-g-spacing-2, 0.5rem);
+    }
+    
+    .call-info-section {
+        padding: var(--slds-g-spacing-2, 0.5rem);
+    }
+    
+    .metrics-section {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 0;
+    }
+    
+    .metric-box {
+        padding: var(--slds-g-spacing-2, 0.5rem);
+        border-right: none;
+        border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+        text-align: center;
+    }
+    
+    .metric-box:last-child {
+        border-bottom: none;
+    }
+    
+    .call-control-toolbar {
+        padding: var(--slds-g-spacing-1, 0.25rem);
+        gap: var(--slds-g-spacing-0, 0.125rem);
+        margin: var(--slds-g-spacing-2, 0.5rem);
+    }
+    
+    .toolbar-button {
+        width: var(--slds-g-sizing-6, 1.5rem);
+        height: var(--slds-g-sizing-6, 1.5rem);
+    }
+    
+    .phone-number {
+        font-size: var(--slds-g-font-size-2, 0.8125rem);
+    }
+    
+    .phone-title {
+        font-size: var(--slds-g-font-size-3, 0.875rem);
+    }
+}
+
+/* Narrow containers (321-400px) - Narrow sidebar */
+@container (min-width: 321px) and (max-width: 400px) {
+    .phone-control-panel {
+        margin: var(--slds-g-spacing-1, 0.25rem) auto;
+        margin-bottom: var(--slds-g-spacing-3, 0.75rem);
+        max-width: 20rem;
+    }
+    
+    .phone-header-linear {
+        padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-3, 0.75rem);
+    }
+    
+    .call-info-section {
+        padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-3, 0.75rem);
+    }
+    
+    .metrics-section {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+    
+    .metric-box {
+        padding: var(--slds-g-spacing-3, 0.75rem);
+        border-right: none;
+        border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+    }
+    
+    .metric-box:last-child {
+        border-bottom: none;
+    }
+    
+    .call-control-toolbar {
+        padding: var(--slds-g-spacing-1, 0.25rem) var(--slds-g-spacing-2, 0.5rem);
+        gap: var(--slds-g-spacing-0, 0.125rem);
+    }
+    
+    .toolbar-button {
+        width: var(--slds-g-sizing-7, 1.75rem);
+        height: var(--slds-g-sizing-7, 1.75rem);
+    }
+    
+    .phone-number {
+        font-size: var(--slds-g-font-size-3, 0.875rem);
+    }
+}
+
+/* Medium containers (401-600px) - Standard sidebar */
+@container (min-width: 401px) and (max-width: 600px) {
+    .phone-control-panel {
+        margin: var(--slds-g-spacing-2, 0.5rem) auto;
+        margin-bottom: var(--slds-g-spacing-4, 1rem);
+        max-width: 24rem;
+    }
+    
+    .call-control-toolbar {
+        gap: var(--slds-g-spacing-1, 0.25rem);
+        padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-3, 0.75rem);
+    }
+    
+    .toolbar-button {
+        width: var(--slds-g-sizing-8, 2rem);
+        height: var(--slds-g-sizing-8, 2rem);
+    }
+    
+    .metrics-section {
+        grid-template-columns: 1fr 1fr; /* Side by side */
+    }
+}
+
+/* Large containers (601-800px) - Wide sidebar */
+@container (min-width: 601px) and (max-width: 800px) {
+    .phone-control-panel {
+        margin: var(--slds-g-spacing-3, 0.75rem) auto;
+        margin-bottom: var(--slds-g-spacing-5, 1.25rem);
+        max-width: 26rem;
+    }
+    
+    .call-control-toolbar {
+        gap: var(--slds-g-spacing-2, 0.5rem);
+        padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-4, 1rem);
+    }
+    
+    .toolbar-button {
+        width: var(--slds-g-sizing-9, 2.25rem);
+        height: var(--slds-g-sizing-9, 2.25rem);
+    }
+}
+
+/* Extra large containers (801px+) - Full width/main content area */
+@container (min-width: 801px) {
+    .phone-control-panel {
+        margin: var(--slds-g-spacing-4, 1rem) auto;
+        margin-bottom: var(--slds-g-spacing-6, 1.5rem);
+        max-width: 28rem; /* Slightly larger for spacious layouts */
+    }
+    
+    .phone-header-linear {
+        padding: var(--slds-g-spacing-4, 1rem) var(--slds-g-spacing-5, 1.25rem);
+    }
+    
+    .call-control-toolbar {
+        gap: var(--slds-g-spacing-3, 0.75rem);
+        padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-5, 1.25rem);
+    }
+    
+    .toolbar-button {
+        width: var(--slds-g-sizing-10, 2.5rem);
+        height: var(--slds-g-sizing-10, 2.5rem);
+    }
+    
+    .phone-number {
+        font-size: var(--slds-g-font-size-5, 1.125rem);
+    }
+    
+    .phone-title {
+        font-size: var(--slds-g-font-size-4, 1rem);
+    }
+}
+
+/* Main phone control panel styling using SLDS 2 global styling hooks with modern enhancements */
+.phone-control-panel {
+    /* Modern background with subtle gradient */
+    background: linear-gradient(145deg, var(--slds-g-color-neutral-base-100, #ffffff) 0%, var(--slds-g-color-neutral-base-99, #fafaf9) 100%);
+    
+    /* Enhanced border with modern styling */
+    border: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+    border-radius: var(--slds-g-sizing-radius-3, 0.75rem);
+    
+    /* Modern elevated shadow with depth */
+    box-shadow: 
+        var(--slds-g-shadow-3, 0 4px 6px -1px rgba(0, 0, 0, 0.1)),
+        var(--slds-g-shadow-1, 0 2px 4px -1px rgba(0, 0, 0, 0.06));
+    
+    /* Typography and layout */
+    font-family: var(--slds-g-font-family-text, 'Salesforce Sans', Arial, sans-serif);
+    
+    /* Narrower and more compact design */
+    max-width: 26rem; /* Further reduced for even more compact design */
+    width: 100%;
+    box-sizing: border-box;
+    
+    /* Smooth transitions for all properties */
+    transition: all var(--slds-g-duration-quickly, 0.15s) ease-in-out;
+    
+    /* Backdrop blur for modern glass effect when supported */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Default margins (overridden by container-specific styles) */
+    margin: var(--slds-g-spacing-2, 0.5rem) auto;
+    margin-bottom: var(--slds-g-spacing-4, 1rem);
+    
+    /* Modern positioning for micro-interactions */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mini-bar styling - Default Dark Theme */
+.mini-bar {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    gap: var(--slds-g-spacing-3, 0.75rem);
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-5, 1.25rem);
+    min-width: 28rem;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+    border-radius: var(--slds-g-sizing-radius-4, 1rem);
+    box-shadow: var(--slds-g-shadow-5, 0 12px 24px rgba(0,0,0,.4));
+    color: white;
+    font-family: var(--slds-g-font-family-text, 'Salesforce Sans', Arial, sans-serif);
+    transition: transform 0.1s ease-out;
+    user-select: none;
+    cursor: grab;
+}
+
+/* Mini-bar light theme support */
+.mini-bar.toolbar-light-theme {
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    box-shadow: var(--slds-g-shadow-5, 0 12px 24px rgba(0,0,0,.15));
+    
+    /* Light theme icon colors - Override all CSS custom properties for mini-bar */
+    --slds-c-icon-color-foreground: #181818 !important;
+    --slds-c-icon-color-foreground-default: #181818 !important;
+    --slds-c-button-icon-color-foreground: #181818 !important;
+    --slds-c-button-color-foreground: #181818 !important;
+    --lwc-colorTextIconDefault: #181818 !important;
+    --lwc-colorTextDefault: #181818 !important;
+    --slds-g-color-brand-base-50: #181818 !important;
+    --slds-g-color-neutral-base-10: #181818 !important;
+    --slds-c-icon-color-background: transparent !important;
+    --slds-c-icon-color-background-default: transparent !important;
+}
+
+.mini-bar.toolbar-light-theme .mini-label {
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+}
+
+.mini-bar.toolbar-light-theme .mini-value {
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+.mini-bar.toolbar-light-theme .mini-value.hold-time {
+    color: var(--slds-g-color-success-base-50, #4bca81);
+}
+
+/* Mini-bar light theme icon overrides - Higher specificity */
+.mini-bar.toolbar-light-theme .drag-handle,
+.mini-bar.toolbar-light-theme .drag-handle *,
+.mini-bar.toolbar-light-theme lightning-icon,
+.mini-bar.toolbar-light-theme .slds-icon,
+.mini-bar.toolbar-light-theme lightning-icon *,
+.mini-bar.toolbar-light-theme .slds-icon *,
+.mini-bar.toolbar-light-theme .slds-button__icon,
+.mini-bar.toolbar-light-theme .slds-button-icon,
+.mini-bar.toolbar-light-theme lightning-primitive-icon {
+    color: rgba(0, 0, 0, 0.5) !important;
+    fill: rgba(0, 0, 0, 0.5) !important;
+    filter: none !important; /* Remove white filter for light theme */
+}
+
+.mini-bar.toolbar-light-theme .drag-handle:hover,
+.mini-bar.toolbar-light-theme .drag-handle:hover *,
+.mini-bar.toolbar-light-theme .mini-button:hover,
+.mini-bar.toolbar-light-theme .mini-button:hover *,
+.mini-bar.toolbar-light-theme .dock-button:hover,
+.mini-bar.toolbar-light-theme .dock-button:hover * {
+    color: var(--slds-g-color-neutral-base-10, #181818) !important;
+    fill: var(--slds-g-color-neutral-base-10, #181818) !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+}
+
+.mini-bar.toolbar-light-theme .mini-button,
+.mini-bar.toolbar-light-theme .mini-button *,
+.mini-bar.toolbar-light-theme .dock-button,
+.mini-bar.toolbar-light-theme .dock-button * {
+    color: var(--slds-g-color-neutral-base-50, #706e6b) !important;
+    fill: var(--slds-g-color-neutral-base-50, #706e6b) !important;
+    filter: none !important;
+}
+
+/* Override nuclear option for mini-bar light theme */
+.mini-bar.toolbar-light-theme,
+.mini-bar.toolbar-light-theme *,
+.mini-bar.toolbar-light-theme lightning-icon,
+.mini-bar.toolbar-light-theme .slds-icon,
+.mini-bar.toolbar-light-theme .slds-button__icon,
+.mini-bar.toolbar-light-theme .slds-button-icon,
+.mini-bar.toolbar-light-theme lightning-primitive-icon {
+    filter: none !important; /* Remove white filter completely for light theme */
+}
+
+.drag-handle {
+    cursor: grab;
+    color: rgba(255, 255, 255, 0.7) !important;
+    background: transparent !important;
+    border: none !important;
+    width: var(--slds-g-sizing-6, 1.5rem) !important;
+    height: var(--slds-g-sizing-6, 1.5rem) !important;
+    transition: all 0.2s ease;
+}
+
+.drag-handle:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.1);
+}
+
+.mini-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.mini-label {
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1;
+}
+
+.mini-value {
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: white;
+    line-height: 1;
+}
+
+.mini-value.hold-time {
+    color: var(--slds-g-color-success-base-50, #4bca81);
+}
+
+.mini-controls {
+    display: flex;
+    gap: var(--slds-g-spacing-2, 0.5rem);
+    align-items: center;
+}
+
+.mini-button {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    fill: white !important;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    width: var(--slds-g-sizing-6, 1.5rem) !important;
+    height: var(--slds-g-sizing-6, 1.5rem) !important;
+    padding: 0 !important;
+}
+
+.mini-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.1);
+}
+
+.end-call-button {
+    background: var(--slds-g-color-error-base-50, #ea001e) !important;
+    border: none !important;
+    border-radius: var(--slds-g-sizing-radius-2, 0.25rem) !important;
+    color: white !important;
+    width: var(--slds-g-sizing-6, 1.5rem) !important;
+    height: var(--slds-g-sizing-6, 1.5rem) !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.end-call-button:hover {
+    background: var(--slds-g-color-error-base-60, #ba0517) !important;
+    transform: scale(1.1);
+}
+
+.end-call-button lightning-icon,
+.end-call-button .slds-icon {
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.dock-button {
+    margin-left: var(--slds-g-spacing-1, 0.25rem);
+    color: rgba(255, 255, 255, 0.8) !important;
+    background: transparent !important;
+    border: none !important;
+    width: var(--slds-g-sizing-6, 1.5rem) !important;
+    height: var(--slds-g-sizing-6, 1.5rem) !important;
+    padding: 0 !important;
+    transition: all 0.2s ease;
+}
+
+.dock-button:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.1);
+}
+
+/* Clean white icons for mini-bar */
+.mini-bar {
+    --slds-c-icon-color-foreground: white !important;
+    --slds-c-button-icon-color-foreground: white !important;
+    --lwc-colorTextIconDefault: white !important;
+}
+
+.mini-bar:not(.toolbar-light-theme) lightning-button-icon:not(.end-call-button),
+.mini-bar:not(.toolbar-light-theme) .mini-button:not(.end-call-button) {
+    filter: brightness(0) invert(1) !important;
+}
+
+.mini-bar:not(.toolbar-light-theme) lightning-icon,
+.mini-bar:not(.toolbar-light-theme) .slds-icon {
+    color: white !important;
+    fill: white !important;
+}
+
+.mini-bar .end-call-button {
+    filter: none !important;
+}
+
+.mini-bar:not(.toolbar-light-theme) .end-call-button lightning-icon,
+.mini-bar:not(.toolbar-light-theme) .end-call-button .slds-icon {
+    color: white !important;
+    fill: white !important;
+    filter: none !important;
+}
+
+.floating-overlay{
+  position:fixed;
+  bottom:1rem;
+  right:1rem;
+  z-index:100000;
+  margin:0 !important;
+  box-shadow:var(--slds-g-shadow-5,0 12px 24px rgba(0,0,0,.4));
+}
+
+/* Subtle hover effect for the entire panel */
+.phone-control-panel:hover {
+    box-shadow: 
+        var(--slds-g-shadow-4, 0 10px 15px -3px rgba(0, 0, 0, 0.1)),
+        var(--slds-g-shadow-2, 0 4px 6px -2px rgba(0, 0, 0, 0.05));
+    transform: translateY(-1px);
+}
+
+/* Bento Header styling with modern enhancements */
+.bento-header {
+    /* Modern border with subtle gradient effect */
+    border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-1, #f3f2f2);
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+    background: linear-gradient(180deg, transparent 0%, var(--slds-g-color-neutral-base-99, #fafaf9) 100%);
+}
+
+/* =====================================
+   LINEAR LAYOUT SYSTEM (MATCHING MOCKUP)
+   ===================================== */
+
+/* Linear Header */
+.phone-header-linear {
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+    border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--slds-g-spacing-2, 0.5rem);
+}
+
+.phone-title {
+    font-size: var(--slds-g-font-size-4, 1rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Call Info Section */
+.call-info-section {
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+    border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+}
+
+.phone-number {
+    font-size: var(--slds-g-font-size-5, 1.125rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    line-height: 1.2;
+    margin-bottom: var(--slds-g-spacing-1, 0.25rem);
+}
+
+.call-direction {
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+    text-transform: capitalize;
+}
+
+/* Dual Metrics Section */
+.metrics-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+}
+
+.metric-box {
+    padding: var(--slds-g-spacing-4, 1rem);
+    text-align: center;
+    border-right: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+}
+
+.metric-box:last-child {
+    border-right: none;
+}
+
+.metric-label {
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+    margin-bottom: var(--slds-g-spacing-1, 0.25rem);
+    line-height: 1;
+}
+
+.metric-value {
+    font-size: var(--slds-g-font-size-5, 1.125rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    line-height: 1;
+}
+
+.metric-value.hold-time {
+    color: var(--slds-g-color-success-base-50, #4bca81);
+}
+
+/* Hold Details Section */
+.hold-details-section {
+    border-top: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+}
+
+.hold-details-header {
+    display: flex;
+    align-items: center;
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+    cursor: pointer;
+    transition: background-color var(--slds-g-duration-quickly, 0.15s) ease-in-out;
+    gap: var(--slds-g-spacing-2, 0.5rem);
+}
+
+.hold-details-header:hover {
+    background-color: var(--slds-g-color-neutral-base-99, #fafaf9);
+}
+
+.details-title {
+    flex: 1;
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    font-weight: var(--slds-g-font-weight-regular, 400);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+.expand-icon {
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+    transition: transform var(--slds-g-duration-quickly, 0.15s) ease-in-out;
+}
+
+.details-icon {
+    color: var(--slds-g-color-success-base-50, #4bca81);
+}
+
+.hold-details-content {
+    padding: 0 var(--slds-g-spacing-4, 1rem) var(--slds-g-spacing-3, 0.75rem);
+    border-top: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-3, #dddbda);
+    background-color: var(--slds-g-color-neutral-base-99, #fafaf9);
+}
+
+.sessions-list-linear {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.session-item-linear {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--slds-g-spacing-2, 0.5rem) 0;
+    border-bottom: 1px solid var(--slds-g-color-border-base-4, #dddbda);
+}
+
+.session-item-linear:last-child {
+    border-bottom: none;
+}
+
+.session-label-linear {
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    font-weight: var(--slds-g-font-weight-regular, 400);
+}
+
+.session-duration-linear {
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+.no-sessions-message {
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+    font-style: italic;
+    text-align: center;
+    margin: var(--slds-g-spacing-3, 0.75rem) 0;
+}
+
+/* =====================================
+   LEGACY HEADER STYLING (kept for debug panel)
+   ===================================== */
+
+/* Header styling with modern enhancements */
+.phone-header {
+    /* Modern border with subtle gradient effect */
+    border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-1, #f3f2f2);
+    padding: var(--slds-g-spacing-4, 1rem) var(--slds-g-spacing-5, 1.25rem);
+    background: linear-gradient(180deg, transparent 0%, var(--slds-g-color-neutral-base-99, #fafaf9) 100%);
+    
+    /* Enhanced corner radius for modern look */
+    border-radius: var(--slds-g-sizing-radius-3, 0.75rem) var(--slds-g-sizing-radius-3, 0.75rem) 0 0;
+    
+    /* Position for decorative elements */
+    position: relative;
+}
+
+/* Modern phone icon with enhanced styling */
+.phone-icon {
+    color: var(--slds-g-color-success-base-60, #4bca81);
+    filter: drop-shadow(0 1px 2px rgba(6, 132, 78, 0.2));
+    transition: all var(--slds-g-duration-quickly, 0.15s) ease-in-out;
+}
+
+.phone-icon:hover {
+    color: var(--slds-g-color-success-base-50, #06844e);
+    transform: scale(1.1);
+}
+
+/* Enhanced typography for title */
+.phone-title {
+    font-size: var(--slds-g-font-size-4, 1rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    letter-spacing: var(--slds-g-letter-spacing-1, 0.03125rem);
+    margin: 0;
+    
+    /* Text shadow for modern depth */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Status row styling */
+.status-row {
+    align-items: center;
+    padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-4, 1rem);
+}
+
+.call-duration {
+    font-size: var(--slds-g-font-size-3, 0.875rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    font-family: var(--slds-g-font-family-text, 'Salesforce Sans', Arial, sans-serif);
+}
+
+/* Hold timer display when on hold */
+.hold-status {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    font-weight: var(--slds-g-font-weight-regular, 400);
+}
+
+.hold-label {
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+    margin-right: var(--slds-g-spacing-1, 0.25rem);
+}
+
+/* Modern hold timer color classes with enhanced visual feedback */
+.hold-timer-green {
+    color: var(--slds-g-color-success-base-50, #4bca81);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    text-shadow: 0 1px 2px rgba(75, 202, 129, 0.2);
+    
+    /* Subtle glow effect for modern appeal */
+    filter: drop-shadow(0 0 4px rgba(75, 202, 129, 0.3));
+    transition: all var(--slds-g-duration-quickly, 0.2s) ease-in-out;
+}
+
+.hold-timer-yellow {
+    color: var(--slds-g-color-warning-base-50, #ffb75d);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    text-shadow: 0 1px 2px rgba(255, 183, 93, 0.2);
+    
+    /* Warning state with subtle animation */
+    filter: drop-shadow(0 0 6px rgba(255, 183, 93, 0.4));
+    animation: gentle-pulse 3s ease-in-out infinite;
+    transition: all var(--slds-g-duration-quickly, 0.2s) ease-in-out;
+}
+
+.hold-timer-red {
+    color: var(--slds-g-color-error-base-50, #ea001e);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    text-shadow: 0 1px 2px rgba(234, 0, 30, 0.2);
+    
+    /* Critical state with enhanced visual prominence */
+    filter: drop-shadow(0 0 8px rgba(234, 0, 30, 0.5));
+    animation: urgent-pulse 2s ease-in-out infinite;
+    transition: all var(--slds-g-duration-quickly, 0.2s) ease-in-out;
+}
+
+/* Gentle pulse for warning state */
+@keyframes gentle-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+/* More pronounced pulse for critical state */
+@keyframes urgent-pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: drop-shadow(0 0 8px rgba(234, 0, 30, 0.5));
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 12px rgba(234, 0, 30, 0.7));
+    }
+}
+
+/* Call information styling */
+.call-info-row {
+    border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-1, #f3f2f2);
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+}
+
+.phone-number {
+    font-size: var(--slds-g-font-size-4, 1rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    line-height: var(--slds-g-line-height-text, 1.25);
+}
+
+.call-direction {
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+    text-transform: capitalize;
+}
+
+/* Modern Toolbar Design - Supports Multiple Themes */
+.call-control-toolbar {
+    /* Default background (will be overridden by inline style) */
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.9) 100%);
+    border-radius: var(--slds-g-sizing-radius-4, 1rem);
+    
+    /* Enhanced shadows for floating effect */
+    box-shadow: 
+        var(--slds-g-shadow-4, 0 8px 16px rgba(0, 0, 0, 0.3)),
+        var(--slds-g-shadow-2, 0 4px 8px rgba(0, 0, 0, 0.2)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Layout and positioning for linear design */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--slds-g-spacing-2, 0.5rem);
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+    margin: var(--slds-g-spacing-4, 1rem);
+    
+    /* Full width in linear layout */
+    width: calc(100% - 2rem); /* Account for margins */
+    box-sizing: border-box;
+    
+    /* Modern backdrop effects */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Smooth animations */
+    transition: all var(--slds-g-duration-quickly, 0.2s) ease-in-out;
+    
+    /* Positioning for modern floating effect */
+    position: relative;
+    z-index: 10;
+}
+
+/* Light theme support for minimal style */
+.call-control-toolbar.toolbar-light-theme {
+    box-shadow: 
+        var(--slds-g-shadow-4, 0 8px 16px rgba(0, 0, 0, 0.1)),
+        var(--slds-g-shadow-2, 0 4px 8px rgba(0, 0, 0, 0.05)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    
+    /* Light theme icon colors - Override all CSS custom properties */
+    --slds-c-icon-color-foreground: #181818 !important;
+    --slds-c-icon-color-foreground-default: #181818 !important;
+    --slds-c-button-icon-color-foreground: #181818 !important;
+    --slds-c-button-color-foreground: #181818 !important;
+    --lwc-colorTextIconDefault: #181818 !important;
+    --lwc-colorTextDefault: #181818 !important;
+    --slds-g-color-brand-base-50: #181818 !important;
+    --slds-g-color-neutral-base-10: #181818 !important;
+    --slds-c-icon-color-background: transparent !important;
+    --slds-c-icon-color-background-default: transparent !important;
+}
+
+/* Light theme toolbar buttons */
+.call-control-toolbar.toolbar-light-theme .toolbar-button {
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+.call-control-toolbar.toolbar-light-theme .toolbar-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.call-control-toolbar.toolbar-light-theme .toolbar-button:active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Light theme active state */
+.call-control-toolbar.toolbar-light-theme .toolbar-button-active {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 
+        inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+        0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Light theme icon overrides - Higher specificity to override defaults */
+.call-control-toolbar.toolbar-light-theme lightning-button-icon,
+.call-control-toolbar.toolbar-light-theme .toolbar-button,
+.call-control-toolbar.toolbar-light-theme lightning-button-icon *,
+.call-control-toolbar.toolbar-light-theme .toolbar-button * {
+    filter: none !important; /* Remove white filter for light theme */
+    color: #181818 !important;
+}
+
+.call-control-toolbar.toolbar-light-theme lightning-icon,
+.call-control-toolbar.toolbar-light-theme .slds-icon,
+.call-control-toolbar.toolbar-light-theme lightning-icon *,
+.call-control-toolbar.toolbar-light-theme .slds-icon *,
+.call-control-toolbar.toolbar-light-theme .slds-button__icon,
+.call-control-toolbar.toolbar-light-theme .slds-button-icon,
+.call-control-toolbar.toolbar-light-theme lightning-primitive-icon {
+    color: #181818 !important;
+    fill: #181818 !important;
+}
+
+/* Override the nuclear option selectors for light theme */
+.call-control-toolbar.toolbar-light-theme,
+.call-control-toolbar.toolbar-light-theme *,
+.call-control-toolbar.toolbar-light-theme lightning-icon,
+.call-control-toolbar.toolbar-light-theme .slds-icon,
+.call-control-toolbar.toolbar-light-theme .slds-button__icon,
+.call-control-toolbar.toolbar-light-theme .slds-button-icon,
+.call-control-toolbar.toolbar-light-theme lightning-primitive-icon,
+.call-control-toolbar.toolbar-light-theme .slds-icon-utility-capslock,
+.call-control-toolbar.toolbar-light-theme .slds-icon-utility-muted,
+.call-control-toolbar.toolbar-light-theme .slds-icon-utility-volume_high,
+.call-control-toolbar.toolbar-light-theme .slds-icon-utility-volume_off,
+.call-control-toolbar.toolbar-light-theme .slds-icon-utility-call,
+.call-control-toolbar.toolbar-light-theme .slds-icon-utility-end_call {
+    color: #181818 !important;
+    fill: #181818 !important;
+    filter: none !important;
+}
+
+/* Keep end call button red even in light theme */
+.call-control-toolbar.toolbar-light-theme .toolbar-button-end-call {
+    background: linear-gradient(145deg, var(--slds-g-color-error-base-50, #ea001e) 0%, var(--slds-g-color-error-base-60, #ba0517) 100%) !important;
+}
+
+.call-control-toolbar.toolbar-light-theme .toolbar-button-end-call lightning-icon,
+.call-control-toolbar.toolbar-light-theme .toolbar-button-end-call .slds-icon {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* NUCLEAR OPTION: Force all toolbar icons to be white using every possible selector (EXCEPT light theme) */
+.call-control-toolbar:not(.toolbar-light-theme),
+.call-control-toolbar:not(.toolbar-light-theme) *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-icon,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-icon svg *,
+.call-control-toolbar:not(.toolbar-light-theme) .slds-icon,
+.call-control-toolbar:not(.toolbar-light-theme) .slds-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) .slds-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) .slds-icon svg *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon lightning-icon,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon lightning-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon lightning-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon lightning-icon svg *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon .slds-icon,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon .slds-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon .slds-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon .slds-icon svg *,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button *,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button lightning-icon,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button lightning-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button lightning-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button lightning-icon svg *,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button .slds-icon,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button .slds-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button .slds-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) .toolbar-button .slds-icon svg * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* Target Lightning button-icon variants specifically (EXCEPT light theme) */
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"],
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] lightning-icon,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] lightning-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] lightning-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] lightning-icon svg *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] .slds-icon,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] .slds-icon *,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] .slds-icon svg,
+.call-control-toolbar:not(.toolbar-light-theme) lightning-button-icon[variant="container"] .slds-icon svg * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* Override any CSS custom properties that Lightning might use (EXCEPT light theme) */
+.call-control-toolbar:not(.toolbar-light-theme) {
+    --slds-c-icon-color-foreground: #ffffff !important;
+    --slds-c-icon-color-foreground-default: #ffffff !important;
+    --slds-c-button-icon-color-foreground: #ffffff !important;
+    --slds-c-button-color-foreground: #ffffff !important;
+    --lwc-colorTextIconDefault: #ffffff !important;
+    --lwc-colorTextDefault: #ffffff !important;
+    --slds-g-color-brand-base-50: #ffffff !important;
+    --slds-g-color-brand-base-60: #ffffff !important;
+}
+
+/* Target any possible SLDS icon classes */
+.call-control-toolbar .slds-button__icon,
+.call-control-toolbar .slds-button__icon svg,
+.call-control-toolbar .slds-button_icon,
+.call-control-toolbar .slds-button_icon svg,
+.call-control-toolbar .slds-button_icon-container,
+.call-control-toolbar .slds-button_icon-container svg,
+.call-control-toolbar .slds-button_icon-container .slds-icon,
+.call-control-toolbar .slds-button_icon-container .slds-icon svg,
+.call-control-toolbar [class*="slds-icon"],
+.call-control-toolbar [class*="slds-icon"] svg,
+.call-control-toolbar [class*="slds-button"] .slds-icon,
+.call-control-toolbar [class*="slds-button"] .slds-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
+}
+
+/* Nuclear option: Use filter to force white color if nothing else works */
+.call-control-toolbar lightning-button-icon,
+.call-control-toolbar .toolbar-button {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* But reset the red end call button background */
+.call-control-toolbar .toolbar-button-end-call {
+    filter: none !important;
+    background: linear-gradient(145deg, var(--slds-g-color-error-base-50, #ea001e) 0%, var(--slds-g-color-error-base-60, #ba0517) 100%) !important;
+}
+
+/* Subtle hover effect for entire toolbar */
+.call-control-toolbar:hover {
+    box-shadow: 
+        var(--slds-g-shadow-5, 0 12px 24px rgba(0, 0, 0, 0.4)),
+        var(--slds-g-shadow-3, 0 6px 12px rgba(0, 0, 0, 0.3)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+/* Modern Flat Toolbar Buttons (matching video conferencing UI patterns) */
+.toolbar-button {
+    /* Flat square design with rounded corners */
+    width: var(--slds-g-sizing-9, 2.25rem);
+    height: var(--slds-g-sizing-9, 2.25rem);
+    border-radius: var(--slds-g-sizing-radius-2, 0.5rem);
+    
+    /* Transparent background - icons float on dark toolbar */
+    background: transparent;
+    border: none;
+    
+    /* Icon styling */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    
+    /* Smooth transitions */
+    transition: all var(--slds-g-duration-quickly, 0.15s) ease-in-out;
+    
+    /* Icon color - white on dark background */
+    color: var(--slds-g-color-neutral-base-100, #ffffff);
+}
+
+/* White icons for toolbar buttons - comprehensive targeting */
+.toolbar-button lightning-icon,
+.toolbar-button lightning-icon svg,
+.toolbar-button .slds-icon,
+.toolbar-button .slds-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Force white color for Lightning button-icon component */
+.toolbar-button lightning-button-icon,
+.toolbar-button lightning-button-icon lightning-icon,
+.toolbar-button lightning-button-icon lightning-icon svg,
+.toolbar-button lightning-button-icon .slds-icon,
+.toolbar-button lightning-button-icon .slds-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Hover state - subtle background highlight */
+.toolbar-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+/* Keep icons white on hover */
+.toolbar-button:hover lightning-icon,
+.toolbar-button:hover lightning-icon svg,
+.toolbar-button:hover .slds-icon,
+.toolbar-button:hover .slds-icon svg,
+.toolbar-button:hover lightning-button-icon lightning-icon,
+.toolbar-button:hover lightning-button-icon lightning-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Active/pressed state */
+.toolbar-button:active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0.95);
+    transition-duration: 0.05s;
+}
+
+/* Keep icons white on active press */
+.toolbar-button:active lightning-icon,
+.toolbar-button:active lightning-icon svg,
+.toolbar-button:active .slds-icon,
+.toolbar-button:active .slds-icon svg,
+.toolbar-button:active lightning-button-icon lightning-icon,
+.toolbar-button:active lightning-button-icon lightning-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Active state for toggle buttons (hold, mute) */
+.toolbar-button-active {
+    background: rgba(255, 255, 255, 0.15);
+    
+    /* Subtle glow effect for active state */
+    box-shadow: 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+        0 0 8px rgba(255, 255, 255, 0.1);
+}
+
+.toolbar-button-active lightning-icon {
+    color: var(--slds-g-color-neutral-base-100, #ffffff) !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* Special styling for End Call button (red background) */
+.toolbar-button-end-call {
+    background: linear-gradient(145deg, var(--slds-g-color-error-base-50, #ea001e) 0%, var(--slds-g-color-error-base-60, #ba0517) 100%);
+    border-radius: var(--slds-g-sizing-radius-2, 0.5rem);
+    
+    /* Enhanced shadow for prominence */
+    box-shadow: 
+        var(--slds-g-shadow-2, 0 2px 4px rgba(234, 0, 30, 0.4)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.toolbar-button-end-call:hover {
+    background: linear-gradient(145deg, var(--slds-g-color-error-base-40, #c23934) 0%, var(--slds-g-color-error-base-50, #ea001e) 100%);
+    transform: scale(1.08);
+    
+    box-shadow: 
+        var(--slds-g-shadow-3, 0 4px 8px rgba(234, 0, 30, 0.5)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.toolbar-button-end-call:active {
+    transform: scale(0.95);
+    box-shadow: 
+        var(--slds-g-shadow-1, 0 1px 2px rgba(234, 0, 30, 0.4)),
+        inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Force white icons for end call button */
+.toolbar-button-end-call lightning-icon,
+.toolbar-button-end-call lightning-icon svg,
+.toolbar-button-end-call .slds-icon,
+.toolbar-button-end-call .slds-icon svg,
+.toolbar-button-end-call lightning-button-icon,
+.toolbar-button-end-call lightning-button-icon lightning-icon,
+.toolbar-button-end-call lightning-button-icon lightning-icon svg,
+.toolbar-button-end-call lightning-button-icon .slds-icon,
+.toolbar-button-end-call lightning-button-icon .slds-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Keep end call icons white on hover and active */
+.toolbar-button-end-call:hover lightning-icon,
+.toolbar-button-end-call:hover lightning-icon svg,
+.toolbar-button-end-call:hover .slds-icon,
+.toolbar-button-end-call:hover .slds-icon svg,
+.toolbar-button-end-call:active lightning-icon,
+.toolbar-button-end-call:active lightning-icon svg,
+.toolbar-button-end-call:active .slds-icon,
+.toolbar-button-end-call:active .slds-icon svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+/* Container-aware responsive design for toolbar */
+
+/* Hold sessions display */
+.hold-sessions {
+    background-color: var(--slds-g-color-neutral-base-98, #f8f9fa);
+    border-top: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-1, #f3f2f2);
+    border-radius: 0 0 var(--slds-g-sizing-radius-2, 0.5rem) var(--slds-g-sizing-radius-2, 0.5rem);
+    padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+}
+
+.hold-session-item {
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+    color: var(--slds-g-color-neutral-base-50, #706e6b);
+    margin-bottom: var(--slds-g-spacing-1, 0.25rem);
+}
+
+.session-label {
+    font-weight: var(--slds-g-font-weight-regular, 400);
+}
+
+.session-duration {
+    font-family: var(--slds-g-font-family-text, 'Salesforce Sans', Arial, sans-serif);
+}
+
+.total-hold {
+    font-size: var(--slds-g-font-size-2, 0.8125rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    border-top: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-4, #dddbda);
+    padding-top: var(--slds-g-spacing-1, 0.25rem);
+}
+
+.total-label {
+    color: var(--slds-g-color-neutral-base-10, #181818);
+}
+
+/* Telephony status indicator - positioned outside bento grid */
+.telephony-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--slds-g-spacing-2, 0.5rem);
+    margin: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-4, 1rem);
+    background-color: var(--slds-g-color-neutral-base-99, #fafaf9);
+    border: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-3, #dddbda);
+    border-radius: var(--slds-g-sizing-radius-2, 0.5rem);
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+}
+
+.status-icon-success {
+    color: var(--slds-g-color-success-base-50, #4bca81);
+}
+
+.status-icon-warning {
+    color: var(--slds-g-color-warning-base-50, #ffb75d);
+}
+
+/* Debug panel styling */
+.debug-panel {
+    background-color: var(--slds-g-color-neutral-base-97, #f4f4f4);
+    border-top: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-4, #dddbda);
+    border-radius: 0 0 var(--slds-g-sizing-radius-2, 0.5rem) var(--slds-g-sizing-radius-2, 0.5rem);
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+}
+
+.debug-info {
+    background-color: var(--slds-g-color-neutral-base-100, #ffffff);
+    border: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-4, #dddbda);
+    border-radius: var(--slds-g-sizing-radius-1, 0.25rem);
+    padding: var(--slds-g-spacing-2, 0.5rem);
+}
+
+.debug-grid > div {
+    margin-bottom: var(--slds-g-spacing-1, 0.25rem);
+}
+
+.debug-messages {
+    margin-top: var(--slds-g-spacing-2, 0.5rem);
+}
+
+.debug-log {
+    background-color: var(--slds-g-color-neutral-base-10, #181818);
+    color: var(--slds-g-color-neutral-base-90, #e6e6e6);
+    font-family: var(--slds-g-font-family-monospace, 'Courier New', monospace);
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+    padding: var(--slds-g-spacing-2, 0.5rem);
+    border-radius: var(--slds-g-sizing-radius-1, 0.25rem);
+    max-height: 12.5rem;
+    overflow-y: auto;
+}
+
+.debug-message {
+    margin-bottom: var(--slds-g-spacing-1, 0.25rem);
+    line-height: var(--slds-g-line-height-text, 1.25);
+}
+
+/* Modern badge styling using SLDS 2 semantic colors with enhanced visual appeal */
+.slds-badge_success {
+    background: linear-gradient(135deg, var(--slds-g-color-success-base-50, #4bca81) 0%, var(--slds-g-color-success-base-60, #2e8b57) 100%);
+    color: var(--slds-g-color-neutral-base-100, #ffffff);
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: var(--slds-g-letter-spacing-1, 0.03125rem);
+    padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-3, 0.75rem);
+    border-radius: var(--slds-g-sizing-radius-pill, 1.5rem);
+    
+    /* Modern shadow and effects */
+    box-shadow: 
+        var(--slds-g-shadow-2, 0 2px 4px rgba(75, 202, 129, 0.3)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all var(--slds-g-duration-quickly, 0.2s) ease-in-out;
+}
+
+.slds-badge_success:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        var(--slds-g-shadow-3, 0 4px 8px rgba(75, 202, 129, 0.4)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.slds-badge_warning {
+    background: linear-gradient(135deg, var(--slds-g-color-warning-base-50, #ffb75d) 0%, var(--slds-g-color-warning-base-60, #ff9500) 100%);
+    color: var(--slds-g-color-neutral-base-10, #181818);
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: var(--slds-g-letter-spacing-1, 0.03125rem);
+    padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-3, 0.75rem);
+    border-radius: var(--slds-g-sizing-radius-pill, 1.5rem);
+    
+    /* Enhanced warning styling */
+    box-shadow: 
+        var(--slds-g-shadow-2, 0 2px 4px rgba(255, 183, 93, 0.3)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all var(--slds-g-duration-quickly, 0.2s) ease-in-out;
+}
+
+.slds-badge_warning:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        var(--slds-g-shadow-3, 0 4px 8px rgba(255, 183, 93, 0.4)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.slds-badge_error {
+    background: linear-gradient(135deg, var(--slds-g-color-error-base-50, #ea001e) 0%, var(--slds-g-color-error-base-60, #ba0517) 100%);
+    color: var(--slds-g-color-neutral-base-100, #ffffff);
+    font-size: var(--slds-g-font-size-1, 0.75rem);
+    font-weight: var(--slds-g-font-weight-bold, 700);
+    text-transform: uppercase;
+    letter-spacing: var(--slds-g-letter-spacing-1, 0.03125rem);
+    padding: var(--slds-g-spacing-2, 0.5rem) var(--slds-g-spacing-3, 0.75rem);
+    border-radius: var(--slds-g-sizing-radius-pill, 1.5rem);
+    
+    /* Critical error styling with prominence */
+    box-shadow: 
+        var(--slds-g-shadow-2, 0 2px 4px rgba(234, 0, 30, 0.3)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: all var(--slds-g-duration-quickly, 0.2s) ease-in-out;
+}
+
+.slds-badge_error:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        var(--slds-g-shadow-3, 0 4px 8px rgba(234, 0, 30, 0.4)),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* =====================================
+   FALLBACK STYLES FOR BROWSERS WITHOUT CONTAINER QUERY SUPPORT
+   ===================================== */
+
+/* Fallback: Use viewport-based media queries for older browsers */
+@supports not (container-type: inline-size) {
+    /* Mobile/narrow viewports - assume narrow container */
+    @media (max-width: 480px) {
+        .phone-control-panel {
+            margin: var(--slds-g-spacing-1, 0.25rem) auto;
+            margin-bottom: var(--slds-g-spacing-3, 0.75rem);
+            max-width: 20rem;
+        }
+        
+        .metrics-section {
+            grid-template-columns: 1fr;
+        }
+        
+        .metric-box {
+            border-right: none;
+            border-bottom: var(--slds-g-sizing-border-1, 1px) solid var(--slds-g-color-border-base-2, #e5e5e5);
+        }
+        
+        .metric-box:last-child {
+            border-bottom: none;
+        }
+        
+        .call-control-toolbar {
+            gap: var(--slds-g-spacing-1, 0.25rem);
+            padding: var(--slds-g-spacing-2, 0.5rem);
+        }
+        
+        .toolbar-button {
+            width: var(--slds-g-sizing-7, 1.75rem);
+            height: var(--slds-g-sizing-7, 1.75rem);
+        }
+        
+        .phone-number {
+            font-size: var(--slds-g-font-size-3, 0.875rem);
+        }
+    }
+    
+    /* Tablet viewports - assume medium container */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .phone-control-panel {
+            margin: var(--slds-g-spacing-2, 0.5rem) auto;
+            margin-bottom: var(--slds-g-spacing-4, 1rem);
+            max-width: 24rem;
+        }
+        
+        .call-control-toolbar {
+            gap: var(--slds-g-spacing-2, 0.5rem);
+        }
+        
+        .toolbar-button {
+            width: var(--slds-g-sizing-8, 2rem);
+            height: var(--slds-g-sizing-8, 2rem);
+        }
+    }
+    
+    /* Desktop viewports - assume large container */
+    @media (min-width: 769px) {
+        .phone-control-panel {
+            margin: var(--slds-g-spacing-3, 0.75rem) auto;
+            margin-bottom: var(--slds-g-spacing-5, 1.25rem);
+            max-width: 26rem;
+        }
+        
+        .call-control-toolbar {
+            gap: var(--slds-g-spacing-3, 0.75rem);
+            padding: var(--slds-g-spacing-3, 0.75rem) var(--slds-g-spacing-4, 1rem);
+        }
+        
+        .toolbar-button {
+            width: var(--slds-g-sizing-9, 2.25rem);
+            height: var(--slds-g-sizing-9, 2.25rem);
+        }
+        
+        .phone-number {
+            font-size: var(--slds-g-font-size-5, 1.125rem);
+        }
+    }
+}
+
+/* Focus states for accessibility using SLDS 2 focus ring */
+.toolbar-button:focus {
+    outline: var(--slds-g-sizing-border-2, 2px) solid var(--slds-g-color-brand-base-50, #0176d3);
+    outline-offset: var(--slds-g-spacing-1, 0.25rem);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.toolbar-button-end-call:focus {
+    outline: var(--slds-g-sizing-border-2, 2px) solid var(--slds-g-color-neutral-base-100, #ffffff);
+    outline-offset: var(--slds-g-spacing-1, 0.25rem);
+}
+
+/* Modern animations for enhanced user experience */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.1;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Smooth slide-in animation for new content */
+.hold-session-item,
+.total-hold {
+    animation: slideIn var(--slds-g-duration-quickly, 0.3s) ease-out;
+}
+
+/* Enhanced pulse animation for active toolbar buttons */
+.toolbar-button-active {
+    animation: pulse var(--slds-g-duration-slowly, 2s) infinite;
+}
+
+/* Ensure proper spacing and alignment using SLDS 2 utilities */
+.slds-grid {
+    align-items: center;
+}
+
+.slds-flex {
+    align-items: center;
+}
