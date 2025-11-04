@@ -1,0 +1,14 @@
+<template>
+    <div class="chat-window" if:true={open}>
+        <div class="chat-header">Chat with Support Bot</div>
+        <div class="chat-body">
+            <template for:each={messages} for:item="msg">
+                <div key={msg.id} class={msg.role}>{msg.text}</div>
+            </template>
+        </div>
+        <div class="chat-footer">
+            <input type="text" placeholder="Type your message..." value={input} oninput={handleInput} />
+            <button onclick={handleSend}>Send</button>
+        </div>
+    </div>
+</template> 
